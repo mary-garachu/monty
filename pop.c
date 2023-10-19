@@ -1,8 +1,8 @@
 #include "monty.h"
 /**
- * pop_stack -print.
+ * pop -print.
  * Description: Function that pop (delete) the value at top of stack
- * @top: element at the top of the stack (head)
+ * @stack: element at the top of the stack (head)
  * @line_number: constant int value in the structure
  * Return: void
  **/

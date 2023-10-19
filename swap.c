@@ -1,6 +1,6 @@
 #include "monty.h"
 /**
- *_swap -main entry.
+ *swap -main entry.
  *Description: Function that swaps the top 2 elements of stack
  * @top: element at the top of the stack (head)
  * @line_number: constant int value in the structure
