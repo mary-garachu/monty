@@ -26,12 +26,14 @@ int main(int argc, char **argv)
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
+		cleanup(stack);
 		exit(EXIT_FAILURE);
 	}
 	file = fopen(argv[1], "r");
 	if (file == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		cleanup(stack);
 		exit(EXIT_FAILURE);
 	}
 	while ((read = getline(&line, &len, file)) != -1)
@@ -69,7 +71,7 @@ void pass_line(char *line, stack_t **stack,
 			opcode = strdup(token);
 		else if (strcmp(opcode, "push") == 0 && token_index % 2 == 0)
 		{
-			num = is_int(token, line_no);
+			num = is_int(token, opcode, stack, line_no);
 		}
 		token = strtok(NULL, del);
 		token_index++;
@@ -86,6 +88,8 @@ void pass_line(char *line, stack_t **stack,
 	if (!opcode_found)
 	{
 		fprintf(stderr, "L%u: unknown instruction %s\n", line_no, opcode);
+		cleanup(*stack);
+		free(opcode);
 		exit(EXIT_FAILURE);
 	}
 	if (opcode != NULL)
@@ -97,13 +101,15 @@ void pass_line(char *line, stack_t **stack,
  * @line_no: line number in the file
  * Return: int if it is integer, exit otherwise
  */
-int is_int(char *token, unsigned int line_no)
+int is_int(char *token, char *opcode, stack_t **stack, unsigned int line_no)
 {
 	int value = atoi(token);
 
 	if (value == 0 && token[0] != '0')
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_no);
+		free(opcode);
+		cleanup(*stack);
 		exit(EXIT_FAILURE);
 	}
 	return (value);
