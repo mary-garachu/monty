@@ -21,10 +21,14 @@ void push(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	new_node->n = num;
-	new_node->next = *stack;
 	new_node->prev = NULL;
-	if (*stack != NULL)
+	if (*stack == NULL)
 	{
+		new_node->next = NULL;
+	}
+	else
+	{
+		new_node->next = *stack;
 		(*stack)->prev = new_node;
 	}
 	*stack = new_node;
