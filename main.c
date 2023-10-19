@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "monty.h"
-int num;
+int num = INT_MIN;
 /**
  * main - receives file inputs from a .m file
  * @argc: intger count of the arguments passed
@@ -61,7 +61,6 @@ void pass_line(char *line, stack_t **stack,
 	int token_index = 1;
 	char *opcode = NULL;
 	int i, opcode_found = 0;
-
 
 	while (token != NULL)
 	{
