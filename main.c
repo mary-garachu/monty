@@ -39,6 +39,7 @@ int main(int argc, char **argv)
 		pass_line(line, &stack, instructions, size_of_instruction, line_no);
 		line_no++;
 	}
+	cleanup(stack);
 	if (line)
 		free(line);
 	fclose(file);

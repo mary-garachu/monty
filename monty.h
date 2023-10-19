@@ -35,6 +35,7 @@ typedef struct instruction_s
 } instruction_t;
 extern int num;
 int is_int(char *token, unsigned int line_no);
+void cleanup(stack_t *stack);
 void pass_line(char *line, stack_t **stack,
 		instruction_t *inst, int size, unsigned int line_no);
 void push(stack_t **stack, unsigned int line_number);
