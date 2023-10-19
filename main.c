@@ -22,6 +22,7 @@ int main(int argc, char **argv)
 		{"sub", sub},
 		{"div", _div},
 		{"mul", mul},
+		{"mod", mod},
 	};
 	FILE *file;
 	char *line = NULL;
