@@ -56,7 +56,7 @@ int main(int argc, char **argv)
 void pass_line(char *line, stack_t **stack,
 		instruction_t *inst, int size, unsigned int line_no)
 {
-	char *del = " \n";
+	char *del = " \t\n";
 	char *token = strtok(line, del);
 	int token_index = 1;
 	char *opcode = NULL;
@@ -64,10 +64,12 @@ void pass_line(char *line, stack_t **stack,
 
 	while (token != NULL)
 	{
-		if (token_index == 1)
+		if (token_index % 2 == 1)
 			opcode = strdup(token);
-		else if (strcmp(opcode, "push") == 0 && token_index == 2)
+		else if (strcmp(opcode, "push") == 0 && token_index % 2 == 0)
+		{
 			num = is_int(token, line_no);
+		}
 		token = strtok(NULL, del);
 		token_index++;
 	}
