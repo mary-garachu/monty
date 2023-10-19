@@ -92,12 +92,13 @@ void pass_line(char *line, stack_t **stack,
 		free(opcode);
 		exit(EXIT_FAILURE);
 	}
-	if (opcode != NULL)
-		free(opcode);
+	free(opcode);
 }
 /**
  * is_int - checks whether the token is integer
  * @token: pointer to the token
+ * @opcode: pointer to opcode
+ * @stack: pointer to the stack
  * @line_no: line number in the file
  * Return: int if it is integer, exit otherwise
  */
