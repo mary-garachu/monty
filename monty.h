@@ -52,7 +52,7 @@ void mul(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
 void pchar(stack_t **stack, unsigned int line_number);
 void rotl_stack(stack_t **stack, unsigned int line_number);
-
+void pstr(stack_t **stack, unsigned int line_number);
 
 
 void div_error(unsigned int line);

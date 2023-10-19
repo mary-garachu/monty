@@ -24,6 +24,7 @@ int main(int argc, char **argv)
 		{"mul", mul},
 		{"mod", mod},
 		{"pchar", pchar},
+		{"pstr", pstr},
 	};
 	FILE *file;
 	char *line = NULL;
