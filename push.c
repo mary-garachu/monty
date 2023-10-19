@@ -12,12 +12,14 @@ void push(stack_t **stack, unsigned int line_number)
 	if (num == INT_MIN)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		cleanup(*stack);
 		exit(EXIT_FAILURE);
 	}
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		cleanup(*stack);
 		exit(EXIT_FAILURE);
 	}
 	new_node->n = num;
