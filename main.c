@@ -16,6 +16,7 @@ int main(int argc, char **argv)
 		{"pall", pall},
 		{"pint", pint},
 		{"pop", pop},
+		{"swap", swap},
 	};
 	FILE *file;
 	char *line = NULL;
